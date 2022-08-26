@@ -17,6 +17,7 @@ let timer;
 let counter = 0;
 let isSticky = false;
 let isOn = true;
+let winScore = 5;
 const collectSound = new Audio('/sound/collect.mp3');
 
 function initGame() {
@@ -138,6 +139,7 @@ function renderBoard(board) {
 }
 function resetGame() {
   isOn = true;
+  isFirst = false;
   clearInterval(ballsInterval);
   clearInterval(boardInterval);
   counter = 0;
@@ -170,9 +172,9 @@ function moveTo(i, j) {
       collectSound.play();
       collectSound.currentTime = 0;
       elDivCounter.innerHTML =
-        counter === 1
-          ? `${counter} BALL was collected!`
-          : `${counter} BALLS were collected!`;
+        counter === winScore - 1
+          ? `${winScore - counter} ball to win`
+          : `${winScore - counter} balls to win`;
     }
 
     // MOVING from current position
@@ -222,8 +224,9 @@ function renderCell(location, value) {
   elCell.innerHTML = value;
 }
 function check(counter) {
-  if (counter === 3) {
+  if (counter === winScore) {
     isOn = false;
+
     counter = 0;
     elDivCounter.innerHTML = 'WIN 🏆';
     clearInterval(timer);
@@ -234,8 +237,8 @@ function check(counter) {
 }
 
 function time() {
-  if (counter === 3) return;
-  elDivCounter.innerHTML = 'game over';
+  if (counter >= winScore) return;
+  elDivCounter.innerHTML = 'YOU LOST 👎';
   isOn = false;
   clearInterval(boardInterval);
   clearInterval(ballsInterval);
@@ -247,7 +250,7 @@ function handleKey(event) {
   if (!isFirst) {
     timer = setTimeout(() => {
       time();
-    }, 3000);
+    }, 15000);
     isFirst = true;
   }
 
