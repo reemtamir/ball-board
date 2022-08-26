@@ -13,6 +13,7 @@ let gGamerPos;
 let boardInterval;
 let ballsInterval;
 let glueInterval;
+let timer;
 let counter = 0;
 let isSticky = false;
 let isOn = true;
@@ -162,7 +163,7 @@ function moveTo(i, j) {
       isSticky = true;
       setTimeout(() => {
         isSticky = false;
-      }, 3000);
+      }, 10000);
     }
     if (targetCell.gameElement === BALL) {
       counter++;
@@ -225,30 +226,27 @@ function check(counter) {
     isOn = false;
     counter = 0;
     elDivCounter.innerHTML = 'WIN 🏆';
-
+    clearInterval(timer);
     clearInterval(boardInterval);
     clearInterval(ballsInterval);
     return;
   }
 }
 
-function time(counter) {
+function time() {
+  if (counter === 3) return;
   elDivCounter.innerHTML = 'game over';
   isOn = false;
-  if (isOn && counter < 3) {
-    clearInterval(boardInterval);
-    clearInterval(ballsInterval);
-    console.log(isLose);
-    return (isLose = true);
-  }
+  clearInterval(boardInterval);
+  clearInterval(ballsInterval);
 }
 
 // Move the player by keyboard arrows
 let isFirst = false;
 function handleKey(event) {
   if (!isFirst) {
-    setTimeout(() => {
-      time(counter);
+    timer = setTimeout(() => {
+      time();
     }, 3000);
     isFirst = true;
   }
