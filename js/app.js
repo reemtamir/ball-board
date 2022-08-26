@@ -31,13 +31,13 @@ function initGame() {
 
 function buildBoard() {
   // Create the Matrix
-  var board = createMat(10, 12);
+  let board = createMat(10, 12);
 
   // Put FLOOR everywhere and WALL at edges
-  for (var i = 0; i < board.length; i++) {
-    for (var j = 0; j < board[0].length; j++) {
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[0].length; j++) {
       // Put FLOOR in a regular cell
-      var cell = { type: FLOOR, gameElement: null };
+      let cell = { type: FLOOR, gameElement: null };
 
       // Place Walls at edges
       if (
@@ -78,6 +78,7 @@ function buildBoard() {
 
   // console.log(board);
   glueInterval = setInterval(() => {
+    //FIX
     let randomI = [Math.floor(Math.random() * 8) + 1];
     let randomJ = [Math.floor(Math.random() * 10) + 1];
 
@@ -92,24 +93,19 @@ function buildBoard() {
     }
   }, 5000);
 
-  // setTimeout(() => {
-
-  // }, 5000);
   return board;
 }
 
 // Render the board to an HTML table
 function renderBoard(board) {
-  var strHTML = '';
-  for (var i = 0; i < board.length; i++) {
+  let strHTML = '';
+  for (let i = 0; i < board.length; i++) {
     strHTML += '<tr>\n';
-    for (var j = 0; j < board[0].length; j++) {
-      var currCell = board[i][j];
+    for (let j = 0; j < board[0].length; j++) {
+      let currCell = board[i][j];
 
-      var cellClass = getClassName({ i: i, j: j });
+      let cellClass = getClassName({ i: i, j: j });
 
-      // if (currCell.type === FLOOR) cellClass += ' floor';
-      // else if (currCell.type === WALL) cellClass += ' wall';
       cellClass += currCell.type === FLOOR ? ' floor' : ' wall';
 
       strHTML += `<td class="cell ${cellClass} 
@@ -132,9 +128,7 @@ function renderBoard(board) {
     strHTML += '</tr>\n';
   }
 
-  // console.log('strHTML is:');
-  // console.log(strHTML);
-  var elBoard = document.querySelector('.board');
+  let elBoard = document.querySelector('.board');
   elBoard.innerHTML = strHTML;
 }
 function resetGame() {
@@ -149,12 +143,12 @@ function resetGame() {
 
 // Move the player to a specific location
 function moveTo(i, j) {
-  var targetCell = gBoard[i][j];
+  let targetCell = gBoard[i][j];
   if (targetCell.type === WALL) return;
 
   // Calculate distance to make sure we are moving to a neighbor cell
-  var iAbsDiff = Math.abs(i - gGamerPos.i);
-  var jAbsDiff = Math.abs(j - gGamerPos.j);
+  let iAbsDiff = Math.abs(i - gGamerPos.i);
+  let jAbsDiff = Math.abs(j - gGamerPos.j);
 
   // If the clicked Cell is one of the four allowed
   if (
@@ -219,26 +213,26 @@ function moveTo(i, j) {
 
 // Convert a location object {i, j} to a selector and render a value in that element
 function renderCell(location, value) {
-  var cellSelector = '.' + getClassName(location);
-  var elCell = document.querySelector(cellSelector);
+  let cellSelector = '.' + getClassName(location);
+  let elCell = document.querySelector(cellSelector);
   elCell.innerHTML = value;
 }
 function check(counter) {
   if (counter === winScore) {
     isOn = false;
 
-    counter = 0;
     elDivCounter.innerHTML = 'WIN 🏆';
     clearInterval(timer);
     clearInterval(boardInterval);
     clearInterval(ballsInterval);
-    return;
+    counter = 0;
+    return isOn;
   }
 }
 
 function time() {
   if (counter >= winScore) return;
-  elDivCounter.innerHTML = 'YOU LOST 👎';
+  elDivCounter.innerHTML = 'GAME OVER ⌛';
   isOn = false;
   clearInterval(boardInterval);
   clearInterval(ballsInterval);
@@ -256,18 +250,12 @@ function handleKey(event) {
 
   if (isSticky) return;
   if (!isOn) return;
+  setInterval(() => {
+    check(counter);
+  }, 1000);
 
-  check(counter);
-
-  // setTimeout(() => {
-  //   clearInterval(boardInterval);
-  //   clearInterval(ballsInterval);
-  //   isOn = false;
-  //   elDivCounter.innerHTML = isOn ? 'WIN 🏆' : 'GAME OVER ⌛';
-  // }, 10000);
-
-  var i = gGamerPos.i;
-  var j = gGamerPos.j;
+  let i = gGamerPos.i;
+  let j = gGamerPos.j;
 
   switch (event.key) {
     case 'ArrowLeft':
@@ -287,6 +275,6 @@ function handleKey(event) {
 
 // Returns the class name for a specific cell
 function getClassName(location) {
-  var cellClass = 'cell-' + location.i + '-' + location.j;
+  let cellClass = 'cell-' + location.i + '-' + location.j;
   return cellClass;
 }
