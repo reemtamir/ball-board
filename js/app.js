@@ -1,18 +1,30 @@
-var WALL = 'WALL';
-var FLOOR = 'FLOOR';
-var BALL = 'BALL';
-var GAMER = 'GAMER';
+let WALL = 'WALL';
+let FLOOR = 'FLOOR';
+let BALL = 'BALL';
+let GAMER = 'GAMER';
+let GLUE = 'GLUE';
+let GAMER_IMG = '<img src="img/gamer.png" />';
+let BALL_IMG = '<img src="img/ball.png" />';
+let GLUE_IMG = '<img src="img/candy.png" />';
 
-var GAMER_IMG = '<img src="img/gamer.png" />';
-var BALL_IMG = '<img src="img/ball.png" />';
-
-var gBoard;
-var gGamerPos;
+let elDivCounter = document.querySelector('.counter');
+let gBoard;
+let gGamerPos;
+let boardInterval;
+let ballsInterval;
+let glueInterval;
+let counter = 0;
+let isSticky = false;
+let isOn = true;
+const collectSound = new Audio('/sound/collect.mp3');
 
 function initGame() {
   gGamerPos = { i: 2, j: 9 };
   gBoard = buildBoard();
   renderBoard(gBoard);
+  boardInterval = setInterval(() => {
+    renderBoard(gBoard);
+  }, 3000);
 }
 
 function buildBoard() {
@@ -49,13 +61,38 @@ function buildBoard() {
 
   // Place the gamer at selected position
   board[gGamerPos.i][gGamerPos.j].gameElement = GAMER;
-  let count = 0;
 
   // Place the Balls (currently randomly chosen positions)
-  let randomI = [Math.floor(Math.random() * 8) + 1];
-  let randomJ = [Math.floor(Math.random() * 10) + 1];
-  board[randomI][randomJ].gameElement = BALL;
+  ballsInterval = setInterval(() => {
+    let randomI = [Math.floor(Math.random() * 8) + 1];
+    let randomJ = [Math.floor(Math.random() * 10) + 1];
+
+    if (
+      board[randomI][randomJ].gameElement !== GAMER ||
+      board[randomI][randomJ].gameElement !== GLUE
+    )
+      board[randomI][randomJ].gameElement = BALL;
+  }, 3000);
+
   // console.log(board);
+  glueInterval = setInterval(() => {
+    let randomI = [Math.floor(Math.random() * 8) + 1];
+    let randomJ = [Math.floor(Math.random() * 10) + 1];
+
+    if (
+      board[randomI][randomJ].gameElement !== GAMER ||
+      board[randomI][randomJ].gameElement !== BALL
+    ) {
+      board[randomI][randomJ].gameElement = GLUE;
+      setTimeout(() => {
+        board[randomI][randomJ].gameElement = FLOOR;
+      }, 4000);
+    }
+  }, 5000);
+
+  // setTimeout(() => {
+
+  // }, 5000);
   return board;
 }
 
@@ -82,6 +119,10 @@ function renderBoard(board) {
           break;
         case BALL:
           strHTML += BALL_IMG;
+          break;
+        case GLUE:
+          strHTML += GLUE_IMG;
+          break;
       }
 
       strHTML += '\t</td>\n';
@@ -94,13 +135,18 @@ function renderBoard(board) {
   var elBoard = document.querySelector('.board');
   elBoard.innerHTML = strHTML;
 }
-let counter = 0;
+function resetGame() {
+  isOn = true;
+  clearInterval(ballsInterval);
+  clearInterval(boardInterval);
+  counter = 0;
+  elDivCounter.innerHTML = '';
+  initGame();
+}
+
 // Move the player to a specific location
 function moveTo(i, j) {
-  let elDivCounter = document.querySelector('.counter');
-
   var targetCell = gBoard[i][j];
-
   if (targetCell.type === WALL) return;
 
   // Calculate distance to make sure we are moving to a neighbor cell
@@ -112,8 +158,16 @@ function moveTo(i, j) {
     (iAbsDiff === 1 && jAbsDiff === 0) ||
     (jAbsDiff === 1 && iAbsDiff === 0)
   ) {
+    if (targetCell.gameElement === GLUE) {
+      isSticky = true;
+      setTimeout(() => {
+        isSticky = false;
+      }, 3000);
+    }
     if (targetCell.gameElement === BALL) {
       counter++;
+      collectSound.play();
+      collectSound.currentTime = 0;
       elDivCounter.innerHTML =
         counter === 1
           ? `${counter} BALL was collected!`
@@ -133,7 +187,7 @@ function moveTo(i, j) {
 
     if (gGamerPos.i === 5 && gGamerPos.j === 11) {
       gGamerPos.i = 5;
-      gGamerPos.j = 1;
+      gGamerPos.j = 0;
       gBoard[gGamerPos.i][gGamerPos.j].gameElement = GAMER;
       renderCell(gGamerPos, GAMER_IMG);
     } else if (gGamerPos.i === 5 && gGamerPos.j === 0) {
@@ -143,12 +197,12 @@ function moveTo(i, j) {
       renderCell(gGamerPos, GAMER_IMG);
     }
     if (gGamerPos.i === 0 && gGamerPos.j === 6) {
-      gGamerPos.i = 8;
+      gGamerPos.i = 9;
       gGamerPos.j = 6;
       gBoard[gGamerPos.i][gGamerPos.j].gameElement = GAMER;
       renderCell(gGamerPos, GAMER_IMG);
     } else if (gGamerPos.i === 9 && gGamerPos.j === 6) {
-      gGamerPos.i = 1;
+      gGamerPos.i = 0;
       gGamerPos.j = 6;
       gBoard[gGamerPos.i][gGamerPos.j].gameElement = GAMER;
       renderCell(gGamerPos, GAMER_IMG);
@@ -166,9 +220,51 @@ function renderCell(location, value) {
   var elCell = document.querySelector(cellSelector);
   elCell.innerHTML = value;
 }
+function check(counter) {
+  if (counter === 3) {
+    isOn = false;
+    counter = 0;
+    elDivCounter.innerHTML = 'WIN 🏆';
+
+    clearInterval(boardInterval);
+    clearInterval(ballsInterval);
+    return;
+  }
+}
+
+function time(counter) {
+  elDivCounter.innerHTML = 'game over';
+  isOn = false;
+  if (isOn && counter < 3) {
+    clearInterval(boardInterval);
+    clearInterval(ballsInterval);
+    console.log(isLose);
+    return (isLose = true);
+  }
+}
 
 // Move the player by keyboard arrows
+let isFirst = false;
 function handleKey(event) {
+  if (!isFirst) {
+    setTimeout(() => {
+      time(counter);
+    }, 3000);
+    isFirst = true;
+  }
+
+  if (isSticky) return;
+  if (!isOn) return;
+
+  check(counter);
+
+  // setTimeout(() => {
+  //   clearInterval(boardInterval);
+  //   clearInterval(ballsInterval);
+  //   isOn = false;
+  //   elDivCounter.innerHTML = isOn ? 'WIN 🏆' : 'GAME OVER ⌛';
+  // }, 10000);
+
   var i = gGamerPos.i;
   var j = gGamerPos.j;
 
