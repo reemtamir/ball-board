@@ -2,6 +2,7 @@ body {
   /* background-color: rgb(60, 170, 38); */
   background-image: url('https://lawnsmith.imgix.net/articles/139/weed-grasses-in-lawns.jpg?auto=format');
   color: #3e08ff;
+  font-size: 20px;
   margin: auto;
   text-align: center;
   height: 75vh;
@@ -31,9 +32,7 @@ button {
   cursor: pointer;
   overflow: hidden;
 }
-span {
-  color: #e90000;
-}
+
 .cell {
   width: 40px;
   height: 40px;
