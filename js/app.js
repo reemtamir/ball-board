@@ -238,8 +238,8 @@ function renderCell(location, value) {
 
 //FIX
 function check(counter) {
-  console.log('checking');
-  console.log('counter', counter, 'win', winScore);
+  // console.log('checking');
+  // console.log('counter', counter, 'win', winScore);
   if (counter === winScore) {
     // console.log('stop');
     clearInterval(checkInterval);
