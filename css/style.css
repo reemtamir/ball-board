@@ -1,5 +1,6 @@
 body {
   /* background-color: rgb(60, 170, 38); */
+
   background-image: url('https://lawnsmith.imgix.net/articles/139/weed-grasses-in-lawns.jpg?auto=format');
   color: #3e08ff;
   font-size: 20px;
@@ -9,6 +10,10 @@ body {
   /* font-size: 1.5rem; */
   /* display: grid;
   height: 500px; */
+}
+
+h1 {
+  font-family: 'DynaPuff', cursive;
 }
 .container {
   height: 75%;
@@ -23,8 +28,9 @@ table {
   margin-top: 20px;
 }
 button {
-  font-size: 30px;
-
+  font-family: 'Rubik Moonrocks', cursive;
+  font-size: 40px;
+  line-height: 2;
   color: white;
   background-color: Transparent;
   background-repeat: no-repeat;
@@ -52,6 +58,7 @@ button {
 }
 
 .counter {
+  font-family: 'Lora', serif;
   /* background-color: #0fdd3c; */
   height: 130px;
   margin: auto;
@@ -59,7 +66,6 @@ button {
   line-height: 2;
   color: rgb(0, 0, 0);
   font-weight: 900;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .result {
@@ -75,7 +81,7 @@ button {
   line-height: 2;
   color: black;
   font-weight: 900;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Lora', serif;
 }
 .footer {
   margin-top: 50px;
@@ -90,11 +96,10 @@ button {
 .footer img:hover {
   height: 70px;
 }
-p > span {
-  color: black;
-}
+
 .copyright {
-  color: #020202;
+  font-family: 'Dancing Script', cursive;
+  color: white;
   font-size: 30px;
   padding: 10px 0;
   text-align: center;
