@@ -8,11 +8,15 @@
 
   <body onkeyup="handleKey(event)" onload="initGame()">
     <h1>
-      COLLECT <span>10</span>
+      COLLECT <span>5</span>
 
       BALLS IN <span>15</span> SECONDS
     </h1>
-    <div class="counter"></div>
+    <div class="result">
+      <div class="counter"></div>
+      <div class="timer">TIME REMAIN</div>
+    </div>
+
     <table>
       <button onclick="resetGame()" type="reset">reset</button>
       <tbody class="board"></tbody>

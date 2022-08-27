@@ -8,6 +8,7 @@ let BALL_IMG = '<img src="img/ball.png" />';
 let GLUE_IMG = '<img src="img/candy.png" />';
 
 let elDivCounter = document.querySelector('.counter');
+
 let gBoard;
 let gGamerPos;
 let boardInterval;
@@ -19,6 +20,19 @@ let isSticky = false;
 let isOn = true;
 let winScore = 5;
 const collectSound = new Audio('/sound/collect.mp3');
+let elDivTimer = document.querySelector('.timer');
+let seconds = 15;
+let timerInterval;
+let checkInterval;
+function incrementSeconds() {
+  seconds -= 1;
+
+  if (seconds <= 0) {
+    clearInterval(timerInterval);
+  } else {
+    elDivTimer.innerText = 'TIME REMAIN: ' + seconds;
+  }
+}
 
 function initGame() {
   gGamerPos = { i: 2, j: 9 };
@@ -26,7 +40,7 @@ function initGame() {
   renderBoard(gBoard);
   boardInterval = setInterval(() => {
     renderBoard(gBoard);
-  }, 3000);
+  }, 1000);
 }
 
 function buildBoard() {
@@ -134,10 +148,15 @@ function renderBoard(board) {
 function resetGame() {
   isOn = true;
   isFirst = false;
+  clearTimeout(timer);
+  clearInterval(timerInterval);
   clearInterval(ballsInterval);
   clearInterval(boardInterval);
   counter = 0;
   elDivCounter.innerHTML = '';
+  elDivTimer.innerText = '';
+  elDivTimer.style.display = 'block';
+  seconds = 15;
   initGame();
 }
 
@@ -163,8 +182,8 @@ function moveTo(i, j) {
     }
     if (targetCell.gameElement === BALL) {
       counter++;
-      collectSound.play();
-      collectSound.currentTime = 0;
+      // collectSound.play();
+      // collectSound.currentTime = 0;
       elDivCounter.innerHTML =
         counter === winScore - 1
           ? `${winScore - counter} ball to win`
@@ -218,30 +237,43 @@ function renderCell(location, value) {
   elCell.innerHTML = value;
 }
 function check(counter) {
+  console.log('checking');
+  console.log('counter', counter, 'win', winScore);
   if (counter === winScore) {
-    isOn = false;
-
-    elDivCounter.innerHTML = 'WIN 🏆';
-    clearInterval(timer);
+    console.log('stop');
+    clearInterval(checkInterval);
+    clearTimeout(timer);
     clearInterval(boardInterval);
     clearInterval(ballsInterval);
+    clearInterval(timerInterval);
+    isOn = false;
+    elDivTimer.style.display = 'none';
+    elDivCounter.innerHTML = 'WIN 🏆';
+
     counter = 0;
     return isOn;
   }
 }
 
 function time() {
-  if (counter >= winScore) return;
-  elDivCounter.innerHTML = 'GAME OVER ⌛';
-  isOn = false;
-  clearInterval(boardInterval);
-  clearInterval(ballsInterval);
+  if (counter <= winScore) {
+    elDivCounter.innerHTML = 'GAME OVER ⌛';
+    elDivTimer.style.display = 'none';
+
+    clearInterval(checkInterval);
+    clearInterval(timerInterval);
+    clearInterval(boardInterval);
+    clearInterval(ballsInterval);
+    isOn = false;
+  }
+  return;
 }
 
 // Move the player by keyboard arrows
 let isFirst = false;
 function handleKey(event) {
   if (!isFirst) {
+    timerInterval = setInterval(incrementSeconds, 1000);
     timer = setTimeout(() => {
       time();
     }, 15000);
@@ -250,8 +282,10 @@ function handleKey(event) {
 
   if (isSticky) return;
   if (!isOn) return;
-  setInterval(() => {
+  checkInterval = setInterval(() => {
+    console.log('running');
     check(counter);
+    console.log();
   }, 1000);
 
   let i = gGamerPos.i;

@@ -40,6 +40,23 @@ span {
   height: 100px;
   margin: auto;
   font-size: 2rem;
+  line-height: 3;
+  color: black;
+  font-weight: 900;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.result {
+  height: 150px;
+  display: flex;
+  line-height: 3;
+}
+.timer {
+  background-color: rgb(216, 142, 142);
+  width: 200px;
+  height: 100px;
+  margin: auto;
+  font-size: 2rem;
   line-height: 1.5;
   color: black;
   font-weight: 900;
