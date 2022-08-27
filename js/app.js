@@ -182,8 +182,8 @@ function moveTo(i, j) {
     }
     if (targetCell.gameElement === BALL) {
       counter++;
-      // collectSound.play();
-      // collectSound.currentTime = 0;
+      collectSound.play();
+      collectSound.currentTime = 0;
       elDivCounter.innerHTML =
         counter === winScore - 1
           ? `${winScore - counter} ball to win`
