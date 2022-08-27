@@ -4,7 +4,10 @@ body {
   color: #3e08ff;
   margin: auto;
   text-align: center;
-  font-size: 20px;
+  height: 75vh;
+  /* font-size: 1.5rem; */
+  /* display: grid;
+  height: 500px; */
 }
 .container {
   height: 75%;
@@ -29,7 +32,7 @@ button {
   overflow: hidden;
 }
 span {
-  font-size: 50px;
+  font-size: 20px;
   color: #e90000;
 }
 .cell {
@@ -43,7 +46,7 @@ span {
 }
 .floor {
   /* background-color: #b4ff9f; */
-  /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWA5bfajbRcaiyqzLrxZ9ZCBXJ0OHZb3oEdscI4JQJmj3eZkXGK16B8EH_WEkB8z0yRq4&usqp=CAU');s */
+  /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWA5bfajbRcaiyqzLrxZ9ZCBXJ0OHZb3oEdscI4JQJmj3eZkXGK16B8EH_WEkB8z0yRq4&usqp=CAU'); */
 }
 .wall {
   background-image: url('https://previews.123rf.com/images/ningkub/ningkub1802/ningkub180200002/94890973-green-grass-texture-background-it-best-for-creative-wallpaper-and-abstract-.jpg');
@@ -54,7 +57,7 @@ span {
   /* background-color: #0fdd3c; */
   height: 130px;
   margin: auto;
-  font-size: 60px;
+  font-size: 30px;
   line-height: 2;
   color: rgb(0, 0, 0);
   font-weight: 900;
@@ -70,7 +73,7 @@ span {
   /* background-color: #f7ea00; */
   height: 130px;
   margin: auto;
-  font-size: 50px;
+  font-size: 30px;
   line-height: 2;
   color: black;
   font-weight: 900;
@@ -94,7 +97,7 @@ p > span {
 }
 .copyright {
   color: #020202;
-  font-size: 50px;
+  font-size: 30px;
   padding: 10px 0;
   text-align: center;
 }
