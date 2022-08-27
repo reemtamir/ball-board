@@ -1,11 +1,15 @@
 body {
   /* background-color: rgb(60, 170, 38); */
   background-image: url('https://lawnsmith.imgix.net/articles/139/weed-grasses-in-lawns.jpg?auto=format');
-  background-size: 500px
-  color: #3e08ff;
+  background-size: 1000px;
+  width: 2200px;
+  height: 1200px;
+  /* border: 2px solid; */
+  /* color: rgb(0, 0, 0);
+  color: #3e08ff; */
   margin: auto;
   text-align: center;
-  height: 75vh;
+  /* height: 75vh; */
   font-size: 20px;
   /* display: grid;
   height: 500px; */
