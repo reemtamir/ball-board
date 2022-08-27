@@ -19,7 +19,7 @@ let counter = 0;
 let isSticky = false;
 let isOn = true;
 let winScore = 5;
-const collectSound = new Audio('/sound/collect.mp3');
+const collectSound = new Audio('sound/collect.mp3');
 let elDivTimer = document.querySelector('.timer');
 let seconds = 15;
 let timerInterval;
