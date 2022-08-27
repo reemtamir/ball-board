@@ -8,9 +8,6 @@ body {
   display: grid;
 }
 
-.container {
-  height: 900px;
-}
 table {
   margin: auto;
   text-align: center;
