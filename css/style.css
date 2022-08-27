@@ -4,9 +4,9 @@ body {
   color: #3e08ff;
   margin: auto;
   text-align: center;
-  font-size: 1.5rem;
-  display: grid;
-  height: 500px;
+  /* font-size: 1.5rem; */
+  /* display: grid;
+  height: 500px; */
 }
 
 table {
@@ -15,7 +15,7 @@ table {
   margin-top: 20px;
 }
 button {
-  font-size: 2rem;
+  font-size: 20px;
   font-weight: 900;
   color: rgb(13, 73, 13);
   background-color: Transparent;
@@ -25,7 +25,7 @@ button {
   overflow: hidden;
 }
 span {
-  font-size: 3.2rem;
+  font-size: 20px;
   color: #e90000;
 }
 .cell {
@@ -50,7 +50,7 @@ span {
   /* background-color: #0fdd3c; */
   height: 130px;
   margin: auto;
-  font-size: 3rem;
+  font-size: 30px;
   line-height: 2;
   color: rgb(0, 0, 0);
   font-weight: 900;
@@ -58,15 +58,15 @@ span {
 }
 
 .result {
-  height: 300px;
+  height: 150px;
   display: flex;
-  line-height: 4;
+  line-height: 2;
 }
 .timer {
   /* background-color: #f7ea00; */
   height: 130px;
   margin: auto;
-  font-size: 3rem;
+  font-size: 30px;
   line-height: 2;
   color: black;
   font-weight: 900;
@@ -90,7 +90,7 @@ p > span {
 }
 .copyright {
   color: #020202;
-  font-size: 2rem;
+  font-size: 30px;
   padding: 10px 0;
   text-align: center;
 }
