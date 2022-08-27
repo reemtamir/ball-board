@@ -185,8 +185,8 @@ function moveTo(i, j) {
       collectSound.currentTime = 0;
       elDivCounter.innerHTML =
         counter === winScore - 1
-          ? `${winScore - counter} ball to win`
-          : `${winScore - counter} balls to win`;
+          ? `${winScore - counter} BALL TO WIN`
+          : `${winScore - counter} BALLS TO WIN`;
     }
 
     // MOVING from current position

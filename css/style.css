@@ -1,8 +1,14 @@
 body {
-  background-color: black;
-  color: white;
+  /* background-color: rgb(60, 170, 38); */
+  background-image: url('https://lawnsmith.imgix.net/articles/139/weed-grasses-in-lawns.jpg?auto=format');
+  color: #3e08ff;
   margin: auto;
   text-align: center;
+  font-size: 1.5rem;
+}
+
+.container {
+  height: 75vh;
 }
 table {
   margin: auto;
@@ -10,13 +16,18 @@ table {
   margin-top: 20px;
 }
 button {
-  width: 100px;
-  height: 40px;
-  margin-top: 10px;
-  background-color: rgb(145, 55, 52);
+  font-size: 2rem;
+  font-weight: 900;
+  color: rgb(13, 73, 13);
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
 }
 span {
-  color: red;
+  font-size: 3.2rem;
+  color: #e90000;
 }
 .cell {
   width: 40px;
@@ -28,37 +39,59 @@ span {
   height: auto;
 }
 .floor {
-  background-color: gray;
+  /* background-color: #b4ff9f; */
+  /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWA5bfajbRcaiyqzLrxZ9ZCBXJ0OHZb3oEdscI4JQJmj3eZkXGK16B8EH_WEkB8z0yRq4&usqp=CAU'); */
 }
 .wall {
-  background-color: brown;
+  background-image: url('https://previews.123rf.com/images/ningkub/ningkub1802/ningkub180200002/94890973-green-grass-texture-background-it-best-for-creative-wallpaper-and-abstract-.jpg');
+  /* background-color: #6ecb63; */
 }
 
 .counter {
-  background-color: rgb(216, 142, 142);
-  width: 200px;
-  height: 100px;
+  /* background-color: #0fdd3c; */
+  height: 130px;
   margin: auto;
-  font-size: 2rem;
-  line-height: 3;
-  color: black;
+  font-size: 3rem;
+  line-height: 2;
+  color: rgb(0, 0, 0);
   font-weight: 900;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .result {
-  height: 150px;
+  height: 300px;
   display: flex;
-  line-height: 3;
+  line-height: 4;
 }
 .timer {
-  background-color: rgb(216, 142, 142);
-  width: 200px;
-  height: 100px;
+  /* background-color: #f7ea00; */
+  height: 130px;
   margin: auto;
-  font-size: 2rem;
-  line-height: 1.5;
+  font-size: 3rem;
+  line-height: 2;
   color: black;
   font-weight: 900;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.footer {
+  height: 65px;
+  text-align: center;
+}
+
+.footer img {
+  height: 50px;
+  margin-left: 20px;
+}
+
+.footer img:hover {
+  height: 70px;
+}
+p > span {
+  color: black;
+}
+.copyright {
+  color: #020202;
+  font-size: 2rem;
+  padding: 10px 0;
+  text-align: center;
 }
