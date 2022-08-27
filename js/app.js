@@ -92,7 +92,6 @@ function buildBoard() {
 
   // console.log(board);
   glueInterval = setInterval(() => {
-    //FIX
     let randomI = [Math.floor(Math.random() * 8) + 1];
     let randomJ = [Math.floor(Math.random() * 10) + 1];
 
@@ -239,8 +238,8 @@ function renderCell(location, value) {
 
 //FIX
 function check(counter) {
-  // console.log('checking');
-  // console.log('counter', counter, 'win', winScore);
+  console.log('checking');
+  console.log('counter', counter, 'win', winScore);
   if (counter === winScore) {
     // console.log('stop');
     clearInterval(checkInterval);
@@ -281,7 +280,7 @@ function handleKey(event) {
     }, 15000);
     isFirst = true;
   }
-  //FIX
+
   if (isSticky) return;
   if (!isOn) return;
   checkInterval = setInterval(() => {
