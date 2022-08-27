@@ -1,18 +1,18 @@
 body {
-  background-color: rgb(60, 170, 38);
-  /* background-image: url('https://lawnsmith.imgix.net/articles/139/weed-grasses-in-lawns.jpg?auto=format'); */
+  /* background-color: rgb(60, 170, 38); */
+  background-image: url('https://lawnsmith.imgix.net/articles/139/weed-grasses-in-lawns.jpg?auto=format');
   color: #3e08ff;
   margin: auto;
   text-align: center;
   height: 75vh;
-  /* font-size: 1.5rem; */
+  font-size: 20px;
   /* display: grid;
   height: 500px; */
 }
 .container {
   height: 75%;
   width: 75%;
-  background-color: red;
+  /* background-color: red; */
   margin: auto;
 }
 
@@ -22,7 +22,7 @@ table {
   margin-top: 20px;
 }
 button {
-  font-size: 20px;
+  font-size: 50px;
   font-weight: 900;
   color: rgb(13, 73, 13);
   background-color: Transparent;
@@ -32,7 +32,7 @@ button {
   overflow: hidden;
 }
 span {
-  font-size: 20px;
+  font-size: 50px;
   color: #e90000;
 }
 .cell {
@@ -46,7 +46,7 @@ span {
 }
 .floor {
   /* background-color: #b4ff9f; */
-  /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWA5bfajbRcaiyqzLrxZ9ZCBXJ0OHZb3oEdscI4JQJmj3eZkXGK16B8EH_WEkB8z0yRq4&usqp=CAU'); */
+  /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWA5bfajbRcaiyqzLrxZ9ZCBXJ0OHZb3oEdscI4JQJmj3eZkXGK16B8EH_WEkB8z0yRq4&usqp=CAU');s */
 }
 .wall {
   background-image: url('https://previews.123rf.com/images/ningkub/ningkub1802/ningkub180200002/94890973-green-grass-texture-background-it-best-for-creative-wallpaper-and-abstract-.jpg');
@@ -57,7 +57,7 @@ span {
   /* background-color: #0fdd3c; */
   height: 130px;
   margin: auto;
-  font-size: 30px;
+  font-size: 60px;
   line-height: 2;
   color: rgb(0, 0, 0);
   font-weight: 900;
@@ -73,7 +73,7 @@ span {
   /* background-color: #f7ea00; */
   height: 130px;
   margin: auto;
-  font-size: 30px;
+  font-size: 50px;
   line-height: 2;
   color: black;
   font-weight: 900;
@@ -97,7 +97,7 @@ p > span {
 }
 .copyright {
   color: #020202;
-  font-size: 30px;
+  font-size: 50px;
   padding: 10px 0;
   text-align: center;
 }
