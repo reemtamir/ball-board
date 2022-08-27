@@ -88,7 +88,7 @@ function buildBoard() {
       board[randomI][randomJ].gameElement !== GLUE
     )
       board[randomI][randomJ].gameElement = BALL;
-  }, 3000);
+  }, 2500);
 
   // console.log(board);
   glueInterval = setInterval(() => {
@@ -236,11 +236,13 @@ function renderCell(location, value) {
   let elCell = document.querySelector(cellSelector);
   elCell.innerHTML = value;
 }
+
+//FIX
 function check(counter) {
-  console.log('checking');
-  console.log('counter', counter, 'win', winScore);
+  // console.log('checking');
+  // console.log('counter', counter, 'win', winScore);
   if (counter === winScore) {
-    console.log('stop');
+    // console.log('stop');
     clearInterval(checkInterval);
     clearTimeout(timer);
     clearInterval(boardInterval);
@@ -279,11 +281,11 @@ function handleKey(event) {
     }, 15000);
     isFirst = true;
   }
-
+  //FIX
   if (isSticky) return;
   if (!isOn) return;
   checkInterval = setInterval(() => {
-    console.log('running');
+    // console.log('running');
     check(counter);
     console.log();
   }, 1000);
