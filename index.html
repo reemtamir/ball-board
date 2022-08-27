@@ -7,34 +7,35 @@
   </head>
 
   <body onkeyup="handleKey(event)" onload="initGame()">
-    <h1>
-      COLLECT <span>5</span>
+    <div class="container">
+      <h1>
+        COLLECT <span>5</span>
 
-      BALLS IN <span>15</span> SECONDS
-    </h1>
+        BALLS IN <span>15</span> SECONDS
+      </h1>
 
-    <div class="result">
-      <div class="counter"></div>
-      <div class="timer">TIME REMAIN</div>
-    </div>
-
-    <table>
-      <button onclick="resetGame()" type="reset">RESET</button>
-      <tbody class="board"></tbody>
-    </table>
-
-    <footer>
-      <div class="footer">
-        <a href="https://www.linkedin.com/" target="_blank"
-          ><img src="img/linkedin-logo.png" alt="linkedin-logo"
-        /></a>
-        <a href="https://github.com/reemtamir" target="_blank"
-          ><img src="img/github-sign.png" alt="github-logo"
-        /></a>
+      <div class="result">
+        <div class="counter"></div>
+        <div class="timer">TIME REMAIN</div>
       </div>
-      <p class="copyright"><span>&copy;</span> 2022 Re'em Tamir</p>
-    </footer>
 
+      <table>
+        <button onclick="resetGame()" type="reset">RESET</button>
+        <tbody class="board"></tbody>
+      </table>
+
+      <footer>
+        <div class="footer">
+          <a href="https://www.linkedin.com/" target="_blank"
+            ><img src="img/linkedin-logo.png" alt="linkedin-logo"
+          /></a>
+          <a href="https://github.com/reemtamir" target="_blank"
+            ><img src="img/github-sign.png" alt="github-logo"
+          /></a>
+        </div>
+        <p class="copyright"><span>&copy;</span> 2022 Re'em Tamir</p>
+      </footer>
+    </div>
     <script src="js/app.js"></script>
     <script src="js/util.js"></script>
   </body>
