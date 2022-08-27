@@ -178,7 +178,7 @@ function moveTo(i, j) {
       isSticky = true;
       setTimeout(() => {
         isSticky = false;
-      }, 10000);
+      }, 3000);
     }
     if (targetCell.gameElement === BALL) {
       counter++;
